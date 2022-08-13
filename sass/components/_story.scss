@@ -1,0 +1,74 @@
+.story {
+  padding: 6rem 6rem 6rem 9rem;
+  background-color: rgba($color-white, .6);
+  box-shadow: 0 3rem 6rem rgba($color-black,.1);
+  border-radius: 3px;
+  width: 75%;
+  margin: 0 auto;
+  transform: skewX(-12deg);
+  margin-bottom: 6rem;
+
+  @include respond(tab-port) {
+    padding: 4rem 4rem 4rem 7rem;
+    width: 100%;
+  }
+  @include respond(phone) {
+    padding: 4rem;
+    transform: skewX(0);
+    text-align: center;
+  }
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    transform: skewX(12deg) translateX(-3rem);
+    position: relative;
+    overflow: hidden;
+    // to make the text as a circle around the text
+    -webkit-shape-outside: circle(50%);
+    shape-outside: circle(50%);
+    -webkit-clip-path: circle(50%);
+    clip-path: circle(50%);
+
+    @include respond(phone) {
+      transform: skewX(0);
+      float: none;
+      margin: 0 auto 3rem;
+    }
+  }
+  &__img {
+    height: 100%;
+    transform: translateX(-3rem) scale(1.4);
+    transition: all .5s;
+  }
+
+  &__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%,20%);
+    transition: all .5s;
+    text-align: center;
+    color: white;
+    font-size: 1.8rem;
+    backface-visibility: hidden;
+  }
+  &__text {
+    transform: skewX(12deg);
+    @include respond(phone) {
+      transform: skewX(0);
+    }
+  }
+
+  &:hover &__caption{
+    opacity: 1;
+    transform: translate(-50%,-50%);
+  }
+
+  &:hover &__img{
+    transform: translateX(-3rem) scale(1);
+    filter: blur(3px) brightness(80%);
+  }
+}
